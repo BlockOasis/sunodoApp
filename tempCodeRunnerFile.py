@@ -1,0 +1,1 @@
+response = requests.post(rollup_server + "/finish", json=finish)
