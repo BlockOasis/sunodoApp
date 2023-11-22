@@ -2,6 +2,8 @@ from os import environ
 import logging
 import requests
 
+from rollups.util import hex2str, str2hex
+
 logging.basicConfig(level="INFO")
 logger = logging.getLogger(__name__)
 
@@ -10,11 +12,13 @@ logger.info(f"HTTP rollup_server url is {rollup_server}")
 
 def handle_advance(data):
     logger.info(f"Received advance request data {data}")
-    return "accept"
+    dataa = int(data)*5
+    return dataa
 
 def handle_inspect(data):
     logger.info(f"Received inspect request data {data}")
-    return "accept"
+    dataa = int(hex2str(data['payload']))**2
+    return dataa
 
 handlers = {
     "advance_state": handle_advance,
